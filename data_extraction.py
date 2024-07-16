@@ -14,7 +14,7 @@ class DataCleaningApp(QWidget):
 
         layout = QVBoxLayout()
 
-        self.label = QLabel('Please upload a PDF file.')
+        self.label = QLabel("Please upload the PDF file that generate by WATERS's app.")
         layout.addWidget(self.label)
 
         self.btn = QPushButton('Upload PDF')
@@ -50,8 +50,8 @@ class DataCleaningApp(QWidget):
                             coll_ev = float(parts[5])
                             delay_s = parts[6]
                             compound = " ".join(parts[7:])
-                            # Retain only the part before the first space
-                            compound = compound.split()[0] if compound else ""
+                            if "Intelli" in compound:
+                               compound = compound.split("Intel")[0].strip()
                             formula = ""
                             new_compound = []
                             for part in compound.split():
